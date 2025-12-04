@@ -7,23 +7,23 @@ from logger import log_state
 from player import Player
 
 
-def main():
+def main() -> None:
     pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    clock = pygame.time.Clock()
+    screen: pygame.Surface = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock: pygame.time.Clock = pygame.time.Clock()
 
-    updatable = pygame.sprite.Group()
-    drawable = pygame.sprite.Group()
-    asteroids = pygame.sprite.Group()
+    updatable: pygame.sprite.Group = pygame.sprite.Group()
+    drawable: pygame.sprite.Group = pygame.sprite.Group()
+    asteroids: pygame.sprite.Group = pygame.sprite.Group()
 
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = updatable
-    asteroid_field = AsteroidField()
+    asteroid_field: AsteroidField = AsteroidField()
 
     Player.containers = (updatable, drawable)
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player: Player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
-    dt = 0
+    dt: float = 0
     while True:
         log_state()
 
