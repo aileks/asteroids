@@ -1,6 +1,7 @@
 import inspect
 import json
 import math
+import os
 import types
 from datetime import datetime
 from typing import Any
@@ -111,7 +112,8 @@ def log_state() -> None:
 
     # New log file on each run
     mode: str = "w" if not _state_log_initialized else "a"
-    with open("game_state.jsonl", mode) as f:
+    os.makedirs("logs", exist_ok=True)
+    with open("logs/game_state.jsonl", mode) as f:
         f.write(json.dumps(entry) + "\n")
 
     _state_log_initialized = True
@@ -131,7 +133,8 @@ def log_event(event_type: str, **details: Any) -> None:
     }
 
     mode: str = "w" if not _event_log_initialized else "a"
-    with open("game_events.jsonl", mode) as f:
+    os.makedirs("logs", exist_ok=True)
+    with open("logs/game_events.jsonl", mode) as f:
         f.write(json.dumps(event) + "\n")
 
     _event_log_initialized = True
