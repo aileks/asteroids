@@ -19,7 +19,6 @@ def main():
         pygame.display.flip()
         tick = clock.tick(60) / 1000
         dt = tick
-        print(dt)
 
 
 
